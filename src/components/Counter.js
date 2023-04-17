@@ -17,7 +17,7 @@ const Counter = () => {
     const dispatch = useDispatch()
 
     const usersArr = useSelector((state) => state.users.usersArray)
-
+    // new Selector for totalAges
     const [onChange, setOnChange] = useState(0)
     const [newUser, setNewUser] = useState('')
 
@@ -29,7 +29,9 @@ const Counter = () => {
         <input type='number'  onChange={(e) => setOnChange(e.target.value)}/>
         <button onClick={()=>dispatch(incrementByAmount(onChange))}>Submit</button>
         
-        <p>{usersArr.map(e => e + ', ')}</p>
+        <p>{usersArr.map(e => e.name + ', ')}</p>
+        <h3>Total Users Ages: </h3>
+        <button>Add Ages</button><br />
         <input type='text' onChange={(e) => setNewUser(e.target.value)} placedholder='please enter new user'/>
         <button onClick={() => dispatch(addUser(newUser))}>Add User</button>
 
