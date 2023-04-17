@@ -32,11 +32,13 @@ export const usersSlice = createSlice({
                 name: action.payload,
                 age:99
             })
+        },
+        totalAgesAcc: (state) => {
+             state.totalAges = state.usersArray.reduce(((accumulator, element) => accumulator + element.age), 0)
         }
-        //add totalAges Function
     }
 })
 
-export const { addUser} = usersSlice.actions
+export const { addUser, totalAgesAcc} = usersSlice.actions
 
 export default usersSlice.reducer
